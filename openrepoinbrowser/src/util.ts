@@ -1,8 +1,6 @@
 const { workspace } =  require('vscode');
 const { exec } = require('child_process');
 const opn = require('opn');
-const path = require('path');
-const fs = require('fs');
 // 打开浏览器(这里只打开默认浏览器)
 const openBrowser = (url : String) => {
     return opn(url.trim());
@@ -14,7 +12,7 @@ const runShell = ():Promise<String> => {
         exec(`cd ${workspace.rootPath}&&git remote get-url origin`,(err:any,stdout:any, stderr:any) => {
             if(err){
                 // reject('获取git仓库地址时发生错误');
-                resolve('https://gitlab.zmaxis.com/');
+                resolve('https://git.bilibili.co/');
                 throw err;
             }else{
                 resolve(stdout);
@@ -23,7 +21,8 @@ const runShell = ():Promise<String> => {
     });
 };
 const getRepositoryUrl = async () => {
-    return runShell();
+    const url = await runShell();
+    return url;
 };
 export default {
     openBrowser,
