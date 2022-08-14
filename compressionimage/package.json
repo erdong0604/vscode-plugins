@@ -1,0 +1,134 @@
+{
+	"name": "compressionimage",
+	"displayName": "CompressionImage",
+	"description": "Compressed Picture Plugin",
+	"version": "0.0.7",
+	"publisher": "ErDong",
+	"license": "MIT",
+	"icon": "assets/logo.png",
+	"repository": {},
+	"engines": {
+		"vscode": "^1.68.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:compressionimage.compress",
+		"onCommand:compressionimage.choose",
+		"onCommand:doing.push",
+		"onCommand:open.repository",
+		"onCommand:open.branch",
+		"onCommand:open.build",
+		"onCommand:open.nuwa_dev",
+		"onCommand:open.window"
+	],
+	"main": "./src/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "compressionimage.compress",
+				"title": "Start Compression Image"
+			},
+			{
+				"command": "compressionimage.choose",
+				"title": "Choose Images"
+			},
+      {
+				"command": "open.window",
+				"title": "Open Window Choose Images"
+			},
+			{
+				"command": "open.nuwa_dev",
+				"title": "Open nuwa ff"
+			},
+			{
+				"command": "open.repository",
+				"title": "Open Repository In Browser"
+			},
+			{
+				"command": "open.branch",
+				"title": "Open Branch In Browser"
+			},
+			{
+				"command": "open.build",
+				"title": "Open Rider In Browser"
+			},
+			{
+				"command": "doing.push",
+				"title": "Auto Push Your Code"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+        {
+					"command": "open.window",
+					"group": "0_modification",
+          "when": "explorerResourceIsFolder"
+				},
+				{
+					"command": "compressionimage.compress",
+					"group": "0_modification"
+				}
+				
+			],
+			"editor/context": [
+				{
+					"command": "open.nuwa_dev",
+					"group": "0_modification"
+				},
+				{
+					"command": "doing.push",
+					"group": "0_modification"
+				},
+				{
+					"command": "open.repository",
+					"group": "0_modification"
+				},
+				{
+					"command": "open.branch",
+					"group": "0_modification"
+				},
+				{
+					"command": "open.build",
+					"group": "0_modification"
+				}
+			]
+		},
+		"configuration": {
+			"title": "compression image",
+			"properties": {
+				"compression-image-config": {
+					"type": "string",
+					"description": "Tinypng Api Key."
+				}
+			}
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js",
+		"build": "vsce package"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.2.0",
+		"@types/mocha": "^9.1.1",
+		"@types/node": "16.x",
+		"@types/vscode": "^1.68.0",
+		"@vscode/test-electron": "^2.1.5",
+		"eslint": "^8.18.0",
+		"typescript": "^4.7.4"
+	},
+	"dependencies": {
+		"execa": "5.1.1",
+		"glob": "^8.0.3",
+		"minimatch": "^5.1.0",
+		"mocha": "^10.0.0",
+		"open": "^8.4.0",
+		"opn": "^6.0.0",
+		"os": "^0.1.2",
+		"simple-git": "^3.10.0",
+		"tinify": "^1.6.1"
+	}
+}
