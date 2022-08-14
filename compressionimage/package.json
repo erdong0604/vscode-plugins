@@ -2,7 +2,7 @@
 	"name": "compressionimage",
 	"displayName": "CompressionImage",
 	"description": "Compressed Picture Plugin",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"publisher": "ErDong",
 	"license": "MIT",
 	"icon": "assets/logo.png",

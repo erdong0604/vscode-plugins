@@ -4,6 +4,9 @@ let buildUrl = 'http://ops-rider.bilibili.co/App/Mybuild?page=1&per_page=10&sear
 const nuwaDev = 'https://ff-dev.bilibili.com/?_port_=8080&_apiEnv_=test04&mode=half&room_id=456&uid=123#/'
 const urlOpen = async (type)=> {
   let url = await getRemoteUrl() || ''
+  if(url.includes('git@')){
+    url = 'https://git.bilibili.co/'+url.split(':')[1]
+  }
   url = url.replace('.git','').trim()
   console.log('url :>> ', url);
   switch(type){
